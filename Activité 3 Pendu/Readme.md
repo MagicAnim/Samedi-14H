@@ -9,10 +9,11 @@ Les classes sont composée de :
 #### Attributs <=> propriétés de la classe = VARIABLES
 
 #### Méthodes <=> actions de la classe = FONCTIONS
+=> Une méthode est forcément une fonction pas l'inverse.
 
 Exemple : Imaginons une classe voiture
 
-- **Attributs** -> Couleur (string = chaîne de caractères), poids (int = entier ou float = nb décimale ), liste, dictionnaire
+- **Attributs** -> Couleur (string = chaîne de caractères), poids (int = entier ou float = nb décimale ), liste, dictionnaire, booléen
 
 - **Methodes** -> allumer_phares(), rouler(), freiner()
 
