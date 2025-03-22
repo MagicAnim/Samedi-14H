@@ -1,5 +1,5 @@
 # On importe la classe Flask du module flask
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, request
 # On importe os
 import os
 # On import random pour les choix aléatoires
@@ -32,8 +32,15 @@ def affichage():
     # On affiche le jeu et on injecte le cookie etat_du_jeu en tant que variable
     return render_template("jeu_pendu.html", etat_du_jeu = session["etat_du_jeu"] )
 
-
-
+# On définit notre dernier route pour deviner / actualiser selon l'entrée de l'utilisateur
+@app.route('/deviner', methods=["POST"])
+def deviner():
+    # On récupère l'input 'entree' et on le stocke dans une variable éponyme
+    entree = request.form['entree']
+    # On applique la méthode ... pour vérifier et actualiser le jeu selon l'entrée de l'utilisateur
+    session["etat_du_jeu"] = Pendu.deviner(session["etat_du_jeu"] , entree.upper())
+    # On redirige et affiche le jeu
+    return redirect("/affichage_jeu")
 
 # Démarre le serveur Flask
 # Host: "0.0.0.0" -> Configure Flask pour accepter des connexions provenant de toutes les adresses IP

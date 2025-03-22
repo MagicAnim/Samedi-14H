@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pendu</title>
 </head>
 <body>
-    <h1> {{etat_du_jeu["mot_a_afficher"]}}</h1>
+    <header class="bg-yellow-400">
+        <h1 class="text-center text-4xl text-white py-6"> Jeu du Pendu</h1>
+    </header>
+
+    <main class="text-center">
+
+        <h1 class="text-4xl p-4"> {{etat_du_jeu["mot_a_afficher"]}}</h1>
+
+        <p class="text-4xl font-bold p-4">Trouve le mot à deviner en proposant des lettres ou la réponse</p>
+
+        <form method="POST" action="/deviner" autocomplete="off">
+            <div class="flex justify-center text-4xl m-6">
+                <input class="border" name="entree" type="text" placeholder="Rentre une letre">
+            </div>
+            <div class="text-4xl">
+                <button class="animate-bounce rounded-lg bg-yellow-400 p-4 m-6" type="submit"> Valider</button>
+            </div>
+        </form>
+
+    </main>
+
+    <footer class="fixed bottom-0 w-full bg-yellow-400 text-white text-center text-2xl">
+        <h3>Copyright © Magicmakers</h3>
+    </footer>
 </body>
 </html>
