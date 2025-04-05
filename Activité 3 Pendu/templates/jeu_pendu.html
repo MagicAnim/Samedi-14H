@@ -6,25 +6,47 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Pendu</title>
 </head>
-<body>
+<body class="font-[cursive]">
     <header class="bg-yellow-400">
         <h1 class="text-center text-4xl text-white py-6"> Jeu du Pendu</h1>
     </header>
 
     <main class="text-center">
 
+
+
+        <div class="flex justify-center text-4xl m-6">
+             <img src="/static/pendu{{etat_du_jeu.vies}}.png">
+        </div>
+
+
         <h1 class="text-4xl p-4"> {{etat_du_jeu["mot_a_afficher"]}}</h1>
+
+        {% if etat_du_jeu.victoire %}
+        <p class="text-4xl font-bold p-4">BRAVO !</p>
+            <div class="text-4xl">
+                <button onclick="window.location.href='/';" class="animate-bounce rounded-lg bg-yellow-400 p-4 m-6"> Rejouer </button>
+            </div>
+        {% elif etat_du_jeu.defaite %}
+        <p class="text-4xl font-bold p-4">DOMMAGE !</p>
+            <div class="text-4xl">
+                <button onclick="window.location.href='/';" class="animate-bounce rounded-lg bg-yellow-400 p-4 m-6"> Rejouer</button>
+            </div>
+        {% else %}
 
         <p class="text-4xl font-bold p-4">Trouve le mot à deviner en proposant des lettres ou la réponse</p>
 
         <form method="POST" action="/deviner" autocomplete="off">
             <div class="flex justify-center text-4xl m-6">
-                <input class="border" name="entree" type="text" placeholder="Rentre une letre">
+                <input class="border" name="entree" type="text" placeholder="Rentre une lettre">
             </div>
             <div class="text-4xl">
                 <button class="animate-bounce rounded-lg bg-yellow-400 p-4 m-6" type="submit"> Valider</button>
             </div>
         </form>
+        {% endif %}
+
+        <h1 class="text-4xl p-4"> {{etat_du_jeu["message"]}}</h1>
 
     </main>
 
